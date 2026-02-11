@@ -16,7 +16,7 @@ It replaces traditional manual systems (paper files, spreadsheets) with a secure
 
 4. Session Management – Authentication & security
 
-### Key Features
+### Features
 
 * Admin/HR Registration & Login
 
@@ -120,12 +120,14 @@ CREATE TABLE employee (
 * Architecture: MVC-style structure
 
 ## Installation & Setup
+
 1️. **Clone the Repository**
-git clone https://github.com/your-username/Employee_management_Using_Flask.git <br>
-cd Employee_management_Using_Flask
+     * git clone https://github.com/your-username/Employee_management_Using_Flask.git 
+
+     * cd Employee_management_Using_Flask
 
 2️. **Install Required Packages**
-pip install flask mysql-connector-python
+     * pip install flask mysql-connector-python
 
 3️. **Configure Database**
 
@@ -136,7 +138,7 @@ pip install flask mysql-connector-python
       * Update database credentials in app.py if required
 
 4️.  **Run the Application**
-python app.py
+      * python app.py
 
 5️. **Open in Browser**
 http://127.0.0.1:5000/
