@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Form</title>
 
 </head>
+
 <body>
     <form action="/register" method="post">
-        <input name = "username" required placeholder = "Enter Username"> <br> <br>
-       <input type = "password" name = "password" required placeholder="Enter Password"> <br> <br>
+        <input name="username" required placeholder="Enter Username"> <br> <br>
+        <input type="password" name="password" required placeholder="Enter Password"> <br> <br>
+        Select Role:
+        <select name="role">
+            <option value="admin">Admin</option>
+            <option value="employee">Employee</option>
+        </select><br><br>
         <button>Register</button>
 
     </form>
     <a href="/">Already Registered? Login</a>
-    
+
 </body>
+
 </html>
