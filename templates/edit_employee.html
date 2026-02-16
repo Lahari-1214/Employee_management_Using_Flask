@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+</head>
+<body>
+<form method="post" action="/update">
+<input name="eid" value="{{ emp[0] }}" readonly><br>
+<input name="ename" value="{{ emp[1] }}"><br>
+<input name="edept" value="{{ emp[2] }}"><br>
+<input name="esalary" value="{{ emp[3] }}"><br>
+<input name="ephone" value="{{ emp[4] }}"><br>
+<button>Update</button>
+</form>
+
+</body>
+</html>
