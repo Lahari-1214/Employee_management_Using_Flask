@@ -159,6 +159,21 @@ def logout():
     session.clear()
     return redirect("/")
 
+# Employee profile route to view their own details, only accessible to employee users
+@app.route("/my_profile")
+def my_profile():
+
+    if "username" not in session or session["role"] != "employee":
+        return redirect("/")
+
+    cursor = mydb.cursor()
+    cursor.execute("SELECT * FROM employee WHERE ename=%s", (session["username"],))
+    data = cursor.fetchone()
+    cursor.close()
+
+    return render_template("my_profile.html", emp=data)
+
+
 
 
 
