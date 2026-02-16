@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Employee</title>
+</head>
+<body>
+    <table border="1">
+<tr>
+<th>ID</th><th>Name</th><th>Dept</th><th>Salary</th><th>Phone</th><th>Action</th>
+</tr>
+
+{% for e in employees %}
+<tr>
+<td>{{ e[0] }}</td>
+<td>{{ e[1] }}</td>
+<td>{{ e[2] }}</td>
+<td>{{ e[3] }}</td>
+<td>{{ e[4] }}</td>
+<td>
+<a href="/edit/{{ e[0] }}">Edit</a>
+<a href="/delete/{{ e[0] }}">Delete</a>
+</td>
+</tr>
+{% endfor %}
+</table>
+
+</body>
+</html>
