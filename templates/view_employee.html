@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Employee</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='view.css') }}">
 </head>
+
 <body>
-    <table border="1">
+<h2>Employee List</h2>
+
+<table>
 <tr>
 <th>ID</th><th>Name</th><th>Dept</th><th>Salary</th><th>Phone</th><th>Action</th>
 </tr>
@@ -27,4 +29,5 @@
 </table>
 
 </body>
+
 </html>

@@ -2,26 +2,29 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Form</title>
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
 </head>
 
 <body>
+<div class="register-card">
+    <h2>Register</h2>
+
     <form action="/register" method="post">
-        <input name="username" required placeholder="Enter Username"> <br> <br>
-        <input type="password" name="password" required placeholder="Enter Password"> <br> <br>
-        Select Role:
+        <input name="username" required placeholder="Enter Username">
+        <input type="password" name="password" required placeholder="Enter Password">
+
         <select name="role">
             <option value="admin">Admin</option>
             <option value="employee">Employee</option>
-        </select><br><br>
+        </select>
+
         <button>Register</button>
-
     </form>
-    <a href="/">Already Registered? Login</a>
 
+    <a href="/">Already Registered? Login</a>
+</div>
 </body>
+
 
 </html>

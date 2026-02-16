@@ -2,17 +2,18 @@
 <html>
 <head>
     <title>Employee Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='employee_dashboard.css') }}">
 </head>
+
 <body>
-
+<div class="dashboard">
     <h2>Welcome {{ session['username'] }}</h2>
-
     <hr>
-
     <h3>Employee Options</h3>
 
-    <a href="/my_profile">View My Details</a><br><br>
+    <a href="/my_profile">View My Details</a>
     <a href="/logout">Logout</a>
-
+</div>
 </body>
+
 </html>

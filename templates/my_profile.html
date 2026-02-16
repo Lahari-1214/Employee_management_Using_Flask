@@ -2,9 +2,11 @@
 <html>
 <head>
     <title>My Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
 </head>
-<body>
 
+<body>
+<div class="profile-card">
     <h2>My Details</h2>
 
     {% if emp %}
@@ -17,8 +19,8 @@
         <p>No details found.</p>
     {% endif %}
 
-    <br>
     <a href="/employee_dashboard">Back</a>
-
+</div>
 </body>
+
 </html>
