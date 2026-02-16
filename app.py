@@ -20,11 +20,11 @@ def register():
     if request.method == "POST":
         uname = request.form['username']
         pwd = request.form['password']
+        role = request.form['role']
         cursor = mydb.cursor()
-        cursor.execute( "INSERT INTO users (username,password,role) VALUES (%s,%s,%s)",(uname,pwd,"admin"))
+        cursor.execute( "INSERT INTO users (username,password,role) VALUES (%s,%s,%s)",(uname,pwd,role))
         mydb.commit()
         cursor.close()
-        mydb.close()
         return redirect("/")
     return render_template('register.html')
 
@@ -40,11 +40,47 @@ def login():
         user = cursor.fetchone()
         cursor.close()
         if user:
-            session["admin"] = uname
-            return redirect("/dashboard")
+            session["username"] = uname
+            session["role"] = user[3]   # role column
+
+            if user[3] == "admin":
+                return redirect("/admin_dashboard")
+            elif user[3] == "employee":
+                return redirect("/employee_dashboard")
+            else:
+                return "Invalid Role!"
+
         else:
             return "INVALID LOGIN REGISTER FIRST"
-    return render_template("login.html")
+    return render_template('login.html')
+
+# Admin dashboard route only accessible to admin users
+@app.route("/admin_dashboard")
+def admin_dashboard():
+
+    # Check if user is logged in
+    if "username" not in session:
+        return redirect("/")
+
+    # Check if role is admin
+    if session["role"] != "admin":
+        return "Access Denied! Admin Only."
+
+    return render_template("admin_dashboard.html")
+# Employee dashboard route only accessible to employee users
+@app.route("/employee_dashboard")
+def employee_dashboard():
+
+    # Check if user is logged in
+    if "username" not in session:
+        return redirect("/")
+
+    # Check if role is employee
+    if session["role"] != "employee":
+        return "Access Denied! Employees Only."
+
+    return render_template("employee_dashboard.html")
+
 
 # Dashboard route only accessible to admin users
 
