@@ -2,20 +2,22 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Employee</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='add.css') }}">
 </head>
 
 <body>
+<div class="container">
+    <h2>Add Employee</h2>
     <form action="/add" method="POST">
-    ID: <input name="eid"><br>
-    Name: <input name="ename"><br>
-    Dept: <input name="edept"><br>
-    Salary: <input name="esalary"><br>
-    Phone: <input name="ephone"><br>
-    <button>Add</button>
+        <input name="eid" placeholder="Employee ID">
+        <input name="ename" placeholder="Name">
+        <input name="edept" placeholder="Department">
+        <input name="esalary" placeholder="Salary">
+        <input name="ephone" placeholder="Phone">
+        <button>Add Employee</button>
     </form>
+</div>
 </body>
 
 </html>
