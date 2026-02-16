@@ -54,6 +54,38 @@ def dashboard():
         return redirect("/")
     return render_template("dashboard.html")
 
+# ADD EMPLOYEE route to add employee details to the database, only accessible to admin users
+@app.route("/add", methods=["GET", "POST"])
+def add():
+    if request.method == "POST":
+
+        data = (
+            request.form["eid"],
+            request.form["ename"],
+            request.form["edept"],
+            request.form["esalary"],
+            request.form["ephone"]
+        )
+
+
+        cursor = mydb.cursor()
+        cursor.execute("INSERT INTO employee VALUES (%s,%s,%s,%s,%s)", data)
+        mydb.commit()
+        cursor.close()
+        return redirect("/view")
+    
+    return render_template("add_employee.html")
+
+# -------- VIEW EMPLOYEES --------
+@app.route("/view")
+def view():
+    cursor = mydb.cursor()
+    cursor.execute("SELECT * FROM employee")
+    data = cursor.fetchall()
+    cursor.close()
+    return render_template("view_employee.html", employees=data)
+
+
 
 # run the app
 
