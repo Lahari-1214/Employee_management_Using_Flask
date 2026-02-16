@@ -65,20 +65,34 @@ In real-world organizations, employee data is managed only by HR/Admin to ensure
 ---
 ## Project Structure
 <pre>
-employee_management/
+EMPLOYEE_MANAGEMENT_SYSTEM/
 │
 ├── app.py
+├── README.md
+├── .gitignore
+│
+├── static/
+│   ├── add.css
+│   ├── dashboard.css
+│   ├── edit.css
+│   ├── employee_dashboard.css
+│   ├── login.css
+│   ├── profile.css
+│   ├── register.css
+│   └── view.css
 │
 ├── templates/
-│   ├── register.html
-│   ├── login.html
-│   ├── dashboard.html
 │   ├── add_employee.html
-│   ├── view_employee.html
-│   └── edit_employee.html
+│   ├── admin_dashboard.html
+│   ├── edit_employee.html
+│   ├── employee_dashboard.html
+│   ├── login.html
+│   ├── my_profile.html
+│   ├── register.html
+│   └── view_employee.html
 │
-└── static/
-    └── style.css
+└── venv/
+
 </pre>
     
 
