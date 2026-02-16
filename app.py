@@ -66,8 +66,6 @@ def add():
             request.form["esalary"],
             request.form["ephone"]
         )
-
-
         cursor = mydb.cursor()
         cursor.execute("INSERT INTO employee VALUES (%s,%s,%s,%s,%s)", data)
         mydb.commit()
@@ -76,7 +74,7 @@ def add():
     
     return render_template("add_employee.html")
 
-# -------- VIEW EMPLOYEES --------
+# VIEW EMPLOYEES 
 @app.route("/view")
 def view():
     cursor = mydb.cursor()
@@ -84,6 +82,32 @@ def view():
     data = cursor.fetchall()
     cursor.close()
     return render_template("view_employee.html", employees=data)
+
+# EDIT EMPLOYEE 
+@app.route("/edit/<eid>")
+def edit(eid):
+    cursor = mydb.cursor()
+    cursor.execute("SELECT * FROM employee WHERE eid=%s", (eid,))
+    emp = cursor.fetchone()
+    cursor.close()
+    return render_template("edit_employee.html", emp=emp)
+
+# UPDATE EMPLOYEE 
+@app.route("/update", methods=["POST"])
+def update():
+    data = (
+        request.form["ename"],
+        request.form["edept"],
+        request.form["esalary"],
+        request.form["ephone"],
+        request.form["eid"]
+    )
+    cursor = mydb.cursor()
+    cursor.execute("UPDATE employee SET ename=%s, edept=%s, esalary=%s, ephone=%s WHERE eid=%s", data)
+    mydb.commit()
+    cursor.close()
+    return redirect("/view")
+
 
 
 
