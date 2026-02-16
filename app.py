@@ -108,6 +108,14 @@ def update():
     cursor.close()
     return redirect("/view")
 
+ # -------- DELETE EMPLOYEE --------
+@app.route("/delete/<eid>")
+def delete(eid):
+    cursor = mydb.cursor()
+    cursor.execute("DELETE FROM employee WHERE eid=%s", (eid,))
+    mydb.commit()
+    cursor.close()
+    return redirect("/view")
 
 
 
