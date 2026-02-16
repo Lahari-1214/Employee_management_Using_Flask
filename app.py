@@ -117,6 +117,13 @@ def delete(eid):
     cursor.close()
     return redirect("/view")
 
+# -------- LOGOUT --------
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/")
+
+
 
 
 # run the app
