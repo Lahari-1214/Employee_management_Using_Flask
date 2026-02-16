@@ -3,6 +3,8 @@ import mysql.connector
 
 app = Flask(__name__)
 app.secret_key = 'emp_123'
+
+
 # Database connection
 mydb = mysql.connector.connect(
     host = "localhost",
@@ -10,6 +12,9 @@ mydb = mysql.connector.connect(
     password = "leela@123",
     database = "company"
 )
+
+
+# Register route only for admin 
 @app.route('/register',methods=['GET','POST'])
 def register():
     if request.method == "POST":
@@ -22,6 +27,8 @@ def register():
         mydb.close()
         return redirect("/")
     return render_template('register.html')
+
+# Login route for admin to access dashboard
 
 @app.route('/',methods=['GET','POST'])
 def login():
@@ -39,10 +46,16 @@ def login():
             return "INVALID LOGIN REGISTER FIRST"
     return render_template("login.html")
 
-@app.route('/dashboard')
-def dashboard():
-    return "Welcome admin"
+# Dashboard route only accessible to admin users
 
+@app.route("/dashboard")
+def dashboard():
+    if "admin" not in session:
+        return redirect("/")
+    return render_template("dashboard.html")
+
+
+# run the app
 
 if __name__ == '__main__':
     app.run(debug=True)
