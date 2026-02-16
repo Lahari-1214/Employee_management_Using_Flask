@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Profile</title>
+</head>
+<body>
+
+    <h2>My Details</h2>
+
+    {% if emp %}
+        <p><b>ID:</b> {{ emp[0] }}</p>
+        <p><b>Name:</b> {{ emp[1] }}</p>
+        <p><b>Department:</b> {{ emp[2] }}</p>
+        <p><b>Salary:</b> {{ emp[3] }}</p>
+        <p><b>Phone:</b> {{ emp[4] }}</p>
+    {% else %}
+        <p>No details found.</p>
+    {% endif %}
+
+    <br>
+    <a href="/employee_dashboard">Back</a>
+
+</body>
+</html>
