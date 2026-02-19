@@ -99,25 +99,30 @@ EMPLOYEE_MANAGEMENT_SYSTEM/
 ## Database Design
 <pre>
 Database Creation
-CREATE DATABASE company;
-USE company;
+CREATE DATABASE employee_management;;
+USE  employee_management;;
 
-Users Table (Admin / HR)
-CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50),
-    password VARCHAR(50),
-    role VARCHAR(20)
-);
-
-Employee Table
 CREATE TABLE employee (
-    eid INT PRIMARY KEY,
-    ename VARCHAR(50),
-    edept VARCHAR(50),
-    esalary INT,
-    ephone VARCHAR(15)
-);
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    ename VARCHAR(100) NOT NULL,
+    dept VARCHAR(100),
+    salary DECIMAL(10,2),
+    phone VARCHAR(15)
+) ENGINE=InnoDB;
+
+
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL,
+    role ENUM('admin','employee') NOT NULL,
+    emp_id INT,
+    FOREIGN KEY (emp_id) 
+        REFERENCES employee(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
 
   </pre>
 
