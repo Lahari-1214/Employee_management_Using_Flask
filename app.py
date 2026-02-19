@@ -10,23 +10,49 @@ mydb = mysql.connector.connect(
     host = "localhost",
     user = "root",
     password = "leela@123",
-    database = "company"
+    database = "employee_management"
 )
 
 
 # Register route only for admin 
-@app.route('/register',methods=['GET','POST'])
+@app.route('/register', methods=['GET','POST'])
 def register():
     if request.method == "POST":
         uname = request.form['username']
         pwd = request.form['password']
         role = request.form['role']
+
         cursor = mydb.cursor()
-        cursor.execute( "INSERT INTO users (username,password,role) VALUES (%s,%s,%s)",(uname,pwd,role))
+
+        if role == "employee":
+            # First create employee record
+            cursor.execute(
+                "INSERT INTO employee (ename, dept, salary, phone) VALUES (%s, %s, %s, %s)",
+                (uname, "Not Assigned", 0, "0000000000")
+            )
+            mydb.commit()
+
+            emp_id = cursor.lastrowid  # get inserted employee id
+
+            # Now insert into users with emp_id
+            cursor.execute(
+                "INSERT INTO users (username, password, role, emp_id) VALUES (%s, %s, %s, %s)",
+                (uname, pwd, role, emp_id)
+            )
+
+        else:  # admin
+            cursor.execute(
+                "INSERT INTO users (username, password, role, emp_id) VALUES (%s, %s, %s, NULL)",
+                (uname, pwd, role)
+            )
+
         mydb.commit()
         cursor.close()
+
         return redirect("/")
+
     return render_template('register.html')
+
 
 # Login route for admin to access dashboard
 
@@ -40,8 +66,9 @@ def login():
         user = cursor.fetchone()
         cursor.close()
         if user:
-            session["username"] = uname
-            session["role"] = user[3]   # role column
+            session["username"] = user[1]
+            session["role"] = user[3]
+            session["emp_id"] = user[4]   # very important
 
             if user[3] == "admin":
                 return redirect("/admin_dashboard")
@@ -170,7 +197,6 @@ def my_profile():
     cursor.execute("SELECT * FROM employee WHERE ename=%s", (session["username"],))
     data = cursor.fetchone()
     cursor.close()
-
     return render_template("my_profile.html", emp=data)
 
 
