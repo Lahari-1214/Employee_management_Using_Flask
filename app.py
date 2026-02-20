@@ -150,7 +150,7 @@ def view():
 @app.route("/edit/<eid>")
 def edit(eid):
     cursor = mydb.cursor()
-    cursor.execute("SELECT * FROM employee WHERE eid=%s", (eid,))
+    cursor.execute("SELECT * FROM employee WHERE id=%s", (eid,))
     emp = cursor.fetchone()
     cursor.close()
     return render_template("edit_employee.html", emp=emp)
@@ -160,13 +160,13 @@ def edit(eid):
 def update():
     data = (
         request.form["ename"],
-        request.form["edept"],
-        request.form["esalary"],
-        request.form["ephone"],
-        request.form["eid"]
+        request.form["dept"],
+        request.form["salary"],
+        request.form["phone"],
+        request.form["id"]
     )
     cursor = mydb.cursor()
-    cursor.execute("UPDATE employee SET ename=%s, edept=%s, esalary=%s, ephone=%s WHERE eid=%s", data)
+    cursor.execute("UPDATE employee SET ename=%s, dept=%s, salary=%s, phone=%s WHERE id=%s", data)
     mydb.commit()
     cursor.close()
     return redirect("/view")
