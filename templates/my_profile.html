@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>My Profile</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
 </head>
 
 <body>
-<div class="profile-card">
-    <h2>My Details</h2>
+    <div class="profile-card">
+        <h2>My Details</h2>
 
-    {% if emp %}
+        {% if emp %}
         <p><b>ID:</b> {{ emp[0] }}</p>
         <p><b>Name:</b> {{ emp[1] }}</p>
         <p><b>Department:</b> {{ emp[2] }}</p>
         <p><b>Salary:</b> {{ emp[3] }}</p>
         <p><b>Phone:</b> {{ emp[4] }}</p>
-    {% else %}
+        {% else %}
         <p>No details found.</p>
-    {% endif %}
+        {% endif %}
 
-    <a href="/employee_dashboard">Back</a>
-    <button onclick="history.back()" style="
+        <a href="/employee_dashboard">Back</a>
+        <button onclick="history.back()" style="
     padding:8px 15px;
     background:#0d1b5e;
     color:white;
     border:none;
     border-radius:5px;
     cursor:pointer;">
-    ← Back
-</button>
-</div>
+            ← Back
+        </button>
+    </div>
 
 </body>
 

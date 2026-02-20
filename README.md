@@ -79,7 +79,8 @@ EMPLOYEE_MANAGEMENT_SYSTEM/
 │   ├── login.css
 │   ├── profile.css
 │   ├── register.css
-│   └── view.css
+│   └── view.css   
+│  
 │
 ├── templates/
 │   ├── add_employee.html

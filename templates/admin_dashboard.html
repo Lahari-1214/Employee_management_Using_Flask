@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
 </head>
 
 <body>
-<div class="dashboard">
-    <h2>Welcome Admin, {{ session['username'] }}</h2>
-    <hr>
-    <h3>Employee Management</h3>
+    <div class="dashboard">
+        <h2>Welcome Admin, {{ session['username'] }}</h2>
+        <hr>
+        <h3>Employee Management</h3>
 
-    <a href="/add">Add Employee</a>
-    <a href="/view">View Employees</a>
-    <a href="/logout">Logout</a>
-    <button onclick="history.back()" style="
+        <a href="/add">Add Employee</a>
+        <a href="/view">View Employees</a>
+        <a href="/logout">Logout</a>
+        <button onclick="history.back()" style="
     padding:8px 15px;
     background:#0d1b5e;
     color:white;
     border:none;
     border-radius:5px;
     cursor:pointer;">
-    ← Back
-</button>
-</div>
+            ← Back
+        </button>
+    </div>
 
 </body>
 

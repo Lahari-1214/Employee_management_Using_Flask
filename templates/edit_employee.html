@@ -1,33 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Edit Employee</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='edit.css') }}">
 </head>
 
 <body>
-<div class="container">
-    <h2>Edit Employee</h2>
-    <form method="post" action="/update">
-        <input type="hidden" name="id" value="{{ emp[0] }}">
-        <!-- <input name="id" value="{{ emp[0] }}" readonly> -->
-        <input name="ename" value="{{ emp[1] }}">
-        <input name="dept" value="{{ emp[2] }}">
-        <input name="salary" value="{{ emp[3] }}">
-        <input name="phone" value="{{ emp[4] }}">
-        <button>Update Employee</button>
-    </form>
-    <br>
-    <button onclick="history.back()" style="
+    <div class="container">
+        <h2>Edit Employee</h2>
+        <form method="post" action="/update">
+            <input type="hidden" name="id" value="{{ emp[0] }}">
+            <!-- <input name="id" value="{{ emp[0] }}" readonly> -->
+            <input name="ename" value="{{ emp[1] }}">
+            <input name="dept" value="{{ emp[2] }}">
+            <input name="salary" value="{{ emp[3] }}">
+            <input name="phone" value="{{ emp[4] }}">
+            <button>Update Employee</button>
+        </form>
+        <br>
+        <button onclick="history.back()" style="
     padding:8px 15px;
     background:#0d1b5e;
     color:white;
     border:none;
     border-radius:5px;
     cursor:pointer;">
-    ← Back
-</button>
-</div>
+            ← Back
+        </button>
+    </div>
 
 </body>
 
