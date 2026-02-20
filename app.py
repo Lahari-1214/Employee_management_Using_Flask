@@ -172,19 +172,15 @@ def update():
     return redirect("/view")
 
  # -------- DELETE EMPLOYEE --------
-@app.route("/delete/<eid>")
-def delete(eid):
+@app.route("/delete/<id>")
+def delete(id):
     cursor = mydb.cursor()
-    cursor.execute("DELETE FROM employee WHERE eid=%s", (eid,))
+    cursor.execute("DELETE FROM employee WHERE id=%s", (id,))
     mydb.commit()
     cursor.close()
     return redirect("/view")
 
-# -------- LOGOUT --------
-@app.route("/logout")
-def logout():
-    session.clear()
-    return redirect("/")
+
 
 # Employee profile route to view their own details, only accessible to employee users
 @app.route("/my_profile")
@@ -199,6 +195,11 @@ def my_profile():
     cursor.close()
     return render_template("my_profile.html", emp=data)
 
+# -------- LOGOUT --------
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/")
 
 
 
