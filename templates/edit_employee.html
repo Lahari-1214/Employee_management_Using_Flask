@@ -9,11 +9,12 @@
 <div class="container">
     <h2>Edit Employee</h2>
     <form method="post" action="/update">
-        <input name="eid" value="{{ emp[0] }}" readonly>
+        <input type="hidden" name="id" value="{{ emp[0] }}">
+        <!-- <input name="id" value="{{ emp[0] }}" readonly> -->
         <input name="ename" value="{{ emp[1] }}">
-        <input name="edept" value="{{ emp[2] }}">
-        <input name="esalary" value="{{ emp[3] }}">
-        <input name="ephone" value="{{ emp[4] }}">
+        <input name="dept" value="{{ emp[2] }}">
+        <input name="salary" value="{{ emp[3] }}">
+        <input name="phone" value="{{ emp[4] }}">
         <button>Update Employee</button>
     </form>
 </div>
