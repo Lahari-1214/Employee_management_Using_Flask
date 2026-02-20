@@ -111,11 +111,11 @@ def employee_dashboard():
 
 # Dashboard route only accessible to admin users
 
-@app.route("/dashboard")
-def dashboard():
-    if "admin" not in session:
-        return redirect("/")
-    return render_template("dashboard.html")
+# @app.route("/dashboard")
+# def dashboard():
+#     if "admin" not in session:
+#         return redirect("/")
+#     return render_template("dashboard.html")
 
 # ADD EMPLOYEE route to add employee details to the database, only accessible to admin users
 @app.route("/add", methods=["GET", "POST"])
@@ -123,14 +123,14 @@ def add():
     if request.method == "POST":
 
         data = (
-            request.form["eid"],
+            # request.form["id"],
             request.form["ename"],
-            request.form["edept"],
-            request.form["esalary"],
-            request.form["ephone"]
+            request.form["dept"],
+            request.form["salary"],
+            request.form["phone"]
         )
         cursor = mydb.cursor()
-        cursor.execute("INSERT INTO employee VALUES (%s,%s,%s,%s,%s)", data)
+        cursor.execute("""INSERT INTO employee (ename, dept, salary, phone)VALUES ( %s, %s, %s, %s)""", data)
         mydb.commit()
         cursor.close()
         return redirect("/view")
